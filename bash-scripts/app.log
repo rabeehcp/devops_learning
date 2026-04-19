@@ -1,0 +1,13 @@
+2024-01-15 10:00:01 INFO  App started successfully
+2024-01-15 10:01:05 INFO  User 'john' logged in
+2024-01-15 10:02:10 INFO  Processing request /api/users
+2024-01-15 10:03:15 ERROR Cannot connect to database
+2024-01-15 10:04:20 INFO  Retrying connection...
+2024-01-15 10:05:25 FATAL Database connection timeout
+2024-01-15 10:06:30 INFO  User 'sara' logged in
+2024-01-15 10:07:35 ERROR Disk space low on /dev/sda1
+2024-01-15 10:08:40 INFO  Backup started
+2024-01-15 10:09:45 CRITICAL Memory usage above 95%
+2024-01-15 10:10:50 INFO  Request completed in 200ms
+2024-01-15 10:11:55 FAILED Payment processing error
+2024-01-15 10:12:00 INFO  App running normally

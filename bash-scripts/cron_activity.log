@@ -1,0 +1,18 @@
+[2026-04-18 16:20:25] ====== Cron job started ======
+[2026-04-18 16:20:25] 🚨 ALERT: Found 5 errors in app.log
+[2026-04-18 16:20:25] ✅ Disk usage OK: 32%
+[2026-04-18 16:20:25] 💾 Free memory: 218MB
+[2026-04-18 16:20:25] ====== Cron job finished ======
+[2026-04-18 16:20:25] 
+[2026-04-19 01:28:04] ====== Cron job started ======
+[2026-04-19 01:28:04] 🚨 ALERT: Found 5 errors in app.log
+[2026-04-19 01:28:04] ✅ Disk usage OK: 32%
+[2026-04-19 01:28:04] 💾 Free memory: 663MB
+[2026-04-19 01:28:04] ====== Cron job finished ======
+[2026-04-19 01:28:04] 
+[2026-04-19 01:29:07] ====== Cron job started ======
+[2026-04-19 01:29:07] 🚨 ALERT: Found 5 errors in app.log
+[2026-04-19 01:29:07] ✅ Disk usage OK: 32%
+[2026-04-19 01:29:07] 💾 Free memory: 648MB
+[2026-04-19 01:29:07] ====== Cron job finished ======
+[2026-04-19 01:29:07] 
