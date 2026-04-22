@@ -1,0 +1,29 @@
+# docker-compose.yml
+# Defines ALL containers for our app
+
+version: '3.8'
+
+services:
+
+  # ── SERVICE 1: Our Flask Web App ──
+  web:
+    build: .                    # build from Dockerfile in current folder
+    container_name: flask-app   # give it a name
+    ports:
+      - "5000:5000"             # map port 5000
+    depends_on:
+      - redis                   # wait for redis to start first!
+    environment:
+      - FLASK_ENV=development   # set environment variable
+    volumes:
+      - .:/app                  # sync local files with container
+    restart: always             # auto restart if crashes
+
+  # ── SERVICE 2: Redis Cache ──
+  redis:
+    image: redis:7-alpine       # use official Redis image (no Dockerfile needed!)
+    container_name: redis-cache
+    ports:
+      - "6379:6379"
+    restart: always
+

@@ -1,0 +1,34 @@
+# .github/workflows/first.yml
+# This is your first GitHub Actions workflow!
+
+name: My First Workflow        # name shown on GitHub
+
+# TRIGGER — when does this run?
+on:
+  push:                        # run when code is pushed
+    branches:
+      - main                   # only on main branch
+
+# JOBS — what to do
+jobs:
+
+  say-hello:                   # job name
+    runs-on: ubuntu-latest     # use GitHub's Ubuntu server
+
+    steps:                     # list of steps
+
+      - name: Print Hello      # step name
+        run: echo "Hello from GitHub Actions!"
+
+      - name: Show Date
+        run: date
+
+      - name: Show System Info
+        run: |
+          echo "OS: $(uname -o)"
+          echo "Hostname: $(hostname)"
+          echo "User: $(whoami)"
+          echo "Directory: $(pwd)"
+
+      - name: List files
+        run: ls -la
