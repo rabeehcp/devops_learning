@@ -1,7 +1,7 @@
 # calculator.py — Simple app we will test
 
 def add(a, b):
-    return a + b
+    return a - b
 
 def subtract(a, b):
     return a - b
