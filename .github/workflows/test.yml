@@ -1,0 +1,40 @@
+name: Run Tests Automatically
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1 — Download your code onto GitHub's server
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2 — Install Python on GitHub's server
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # Step 3 — Install required libraries
+      - name: Install dependencies
+        run: |
+          pip install pytest
+          pip install -r github-actions/testing-demo/requirements.txt
+
+      # Step 4 — Run the tests!
+      - name: Run tests
+        run: |
+          cd github-actions/testing-demo
+          pytest test_calculator.py -v
+
+      # Step 5 — Show pass/fail summary
+      - name: Test Summary
+        run: echo "All tests completed!"
