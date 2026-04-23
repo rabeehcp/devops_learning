@@ -1,0 +1,63 @@
+name: Test and Build Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  # ── JOB 1: Run Tests ──────────────────
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install flask pytest
+          pip install -r github-actions/auto-docker/requirements.txt
+
+      - name: Run tests
+        run: |
+          cd github-actions/auto-docker
+          pytest test_app.py -v
+
+  # ── JOB 2: Build & Push Docker Image ──
+  build-and-push:
+    runs-on: ubuntu-latest
+    needs: test          # only run if tests PASS!
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Docker image
+        run: |
+          cd github-actions/auto-docker
+          docker build -t secrettt/devops-auto:latest .
+          docker build -t secrettt/devops-auto:${{ github.sha }} .
+
+      - name: Push to Docker Hub
+        run: |
+          docker push secrettt/devops-auto:latest
+          docker push secrettt/devops-auto:${{ github.sha }}
+
+      - name: Success message
+        run: |
+          echo "Image built and pushed successfully!"
+          echo "Image: secrettt/devops-auto:latest"
+          echo "Commit: ${{ github.sha }}"
