@@ -1,4 +1,4 @@
-name: Run Tests Automatically
+name: Run Tests Automatically in  workflow action
 
 on:
   push:
