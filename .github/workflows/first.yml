@@ -1,0 +1,23 @@
+name: My First Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Hello
+        run: echo "Hello from GitHub Actions!"
+
+      - name: Show Date
+        run: date
+
+      - name: Show System Info
+        run: |
+          echo "OS: $(uname -o)"
+          echo "Hostname: $(hostname)"
+          echo "User: $(whoami)"
